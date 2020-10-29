@@ -1,0 +1,43 @@
+<%- include('../partials/header') %>
+    
+    <div class="container">
+
+        <h1 class="intro"><%= pageTitle %></h1>
+
+        <form method="POST" action="/products">
+            <!-- Name -->
+            <div class="form-group">
+            <label for="product-name">Product Name</label>
+            <input type="text" class="form-control" name="product_name" id="product-name" required>
+            </div>
+
+            <!-- Price -->
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="text" class="form-control" name="price" id="price" required>
+            </div>
+
+            <!-- Priority -->
+            <div class="form-group">
+                <label for="priority">Priority</label>
+                <input type="text" class="form-control" name="priority" id="priority" required>
+            </div>
+
+            <!-- Remarks -->
+            <div class="form-group">
+                <label for="remarks">Remarks</label>
+                <input type="text" class="form-control" name="remarks" id="remarks" required>
+            </div>
+
+            <!-- Image URL -->
+            <div class="form-group">
+                <label for="img-url">Image URL</label>
+                <input type="url" class="form-control" name="img_url" id="img-url">
+            </div>
+
+            <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Submit</button>
+        </form>
+
+    </div>
+
+<%- include('../partials/footer') %>

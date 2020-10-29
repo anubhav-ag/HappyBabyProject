@@ -1,0 +1,18 @@
+<%- include('../partials/header'); %>
+
+    <h1><%= pageTitle %></h1>
+
+    <article>
+        <p>Name: <%= item.name %></p>
+        <p>Price: <%= item.price %></p>
+        <p>Priority: <%= item.priority %></p>
+        <p>Remarks: <%= item.remarks %></p>
+        <p>
+            <a class="btn btn-primary" href="/products/<%= item.slug %>/ratings/new">Give Review</a>
+        </p>
+        <p>
+            <img src="<%= item.image %>" />
+        </p>
+    </article>
+
+<%- include('../partials/footer'); %>
