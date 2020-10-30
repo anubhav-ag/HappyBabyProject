@@ -48,7 +48,6 @@ app.get('/introduction', productsController.introPage)
 //contact us page
 app.get('/contact', productsController.contactPage)
 
-
 // index route
 app.get('/products', productsController.listProducts)
 

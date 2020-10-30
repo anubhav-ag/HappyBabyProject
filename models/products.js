@@ -23,8 +23,8 @@ const productSchema = new mongoose.Schema({
     },
     image: String,
     
-    votes: String,
-    percentage: String
+    thumbsUp: String,
+    thumbsDown: String
 
 })
 

@@ -157,7 +157,7 @@ const controllers = {
                         }
                     }
                 })
-                          res.render("/users/cart", {
+                          res.render("users/cart", {
                               pageTitle: 'User-cart',
                               products: results._id
                             })

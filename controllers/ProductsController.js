@@ -20,7 +20,8 @@ listProducts: (req, res) => {
         .then(results => {
             res.render('products/index', {
                 pageTitle: "List of Products",
-                products: results
+                products: results,
+
             })
         })
 },

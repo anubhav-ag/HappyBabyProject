@@ -17,33 +17,29 @@
                     <h3 class="product-title"><a href="/products/<%= item.slug %>"><%= 'Name: ' + item.name %></a></h3>
                 <p class="product-description index"><%= item.remarks %>
                 </p>
-                    <div class="rating">
-                            <span class="review-no index">41 reviews</span>
-                        </div>
-                    <p class="price index">
-                        <%= 'Price: ' + item.price %>
+
+                    <p class="index">
+                        <%= 'Price: $' + item.price %>
                     </p>
                     <p class="index">
                     <%= 'Priority: ' + item.priority %>
                     </p>
-                <p class="vote index"><strong>91%</strong> of buyers enjoyed this product! <strong> (87 votes)</strong></p>
+                <p class="vote index"><strong><%= item.thumbsUp %></strong> <i class="fa fa-thumbs-up" style="font-size:24px"></i>       
+                <strong><%= item.thumbsDown %> <i class="fa fa-thumbs-down" style="font-size:24px"></i>
+                    </strong></p>
+                <% if (user !== null) { %>
                 <div class="outer">
                     <div class="inner">
                         <a class="btn btn-outline-success my-2 my-sm-0" href="/products/<%= item.slug %>/edit">Edit</a>
                     </div>
-                    <!--change add to cart to post request-->
+                    <% } %>
                     <div class="inner">
                     <form method="POST" action="/users/cart">
                         <input type="hidden" name="product_id" value="<%= item._id %>" />
                         <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Add to Cart</button>
                     </div>
-                    <% if (user !== null) { %>
                     </form>
-                    <div class="inner">
-                    <!-- <form method="POST" action="/products/?_method=DELETE">
-                        <button type="submit" class="btn btn-danger btn-outline-success my-2 my-sm-0">Delete</button>
-                    </form> -->
-                    <% } %>
+
                 </div>
                 </div>
                 </div>
