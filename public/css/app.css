@@ -14,6 +14,15 @@ width: 100%
 text-align: center;
 font-family: 'Gochi Hand', cursive;
 font-size: 54px;
+padding-bottom: 0px;
+margin-bottom: 0px;
+}
+
+.heading-parents {
+    text-align: center;
+    font-family: 'Lobster Two', cursive;
+    font-size: 22px;
+
 }
 
 .small-heading {
@@ -25,11 +34,13 @@ font-size: 26px;
 font-family: 'Lobster Two', cursive;
 font-size: 20px;
 }
+
 .intro {
 text-align: center;
 font-family: 'Lobster Two', cursive;
 font-size: 30px;
-margin-bottom: 0;
+margin-bottom: 20px;
+margin-top: 20px;
 }
 
 .center {
@@ -38,10 +49,13 @@ justify-content: center;
 align-items: center;
 }
 
-p {
+p, .index {
 font-family: 'Oswald', sans-serif;
 font-size: 20px;
+margin-top: 0px;
+
 }
+
 .right {
 text-align: right;
 }
@@ -115,7 +129,6 @@ flex-direction: column; }
 
 
 .product-title, .price, .sizes, .colors {
-text-transform: UPPERCASE;
 font-weight: bold;
 font-family: 'Oswald', sans-serif;
 }
@@ -166,4 +179,12 @@ transform: scale(1); } }
 .delete:hover {
 background-color: red;
 border-color: red;
+}
+
+.col-6 {
+    margin: 20px;
+    padding: 20px;
+    border: 2px solid red;
+    border-radius: 25px;
+
 }

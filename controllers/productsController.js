@@ -8,6 +8,12 @@ const productsController = {
             pageTitle: "Happy Baby - Introduction"
         })
     },
+    
+    contactPage: (req, res) => {
+        res.render('products/contact', {
+            pageTitle: "Happy Baby - Contact Us"
+        })
+    },
 
 listProducts: (req, res) => {
     ProductModel.find()

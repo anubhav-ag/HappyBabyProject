@@ -223,7 +223,7 @@ deleteFromCart: (req, res) => {
             }
         })
                     .then(deleteResult => {
-                        console.log("219 ",deleteResult)
+                        //console.log("219 ",deleteResult)
                         getUserProducts(req.session.user._id)
                         .then(userProduct=>{
                             //console.log("I AM HERE   ", userProduct)

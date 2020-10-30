@@ -2,21 +2,26 @@
     
     <div class="container">
 
-        <h1 class="intro">User Login</h1>
+        <h1 class="intro">Your gateway to HappyBaby</h1>
+        <div class="row center">
+            <div class="col-6">
+                <form method="POST" action="/users/login">
+                    <div class="form-group index">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Your E-mail here" required/>
+                    </div>
 
-        <form method="POST" action="/users/login">
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email" />
-            </div>
-
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" name="password" />
-            </div>
-
-            <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Submit</button>
-        </form>
+                    <div class="form-group index">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Your Password hear" required/>
+                    </div>
+                    <div class="outer center">
+                        <button type="submit" class="inner btn btn-outline-success my-2 my-sm-0">Submit</button>
+                    </div>    
+                </form>
+        </div>
+        
+    </div>
 
     </div>
 

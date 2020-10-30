@@ -15,14 +15,16 @@ const productSchema = new mongoose.Schema({
         required: true
     },
     priority: {
-        type: String,
+        type: mongoose.Types.Decimal128,
         required: true
     },
     remarks: {
         type: String,
     },
     image: String,
+    
     votes: String,
+    
     percentage: String
 
 })
