@@ -3,41 +3,45 @@
 <div class="container">
 
     <h1 class="intro"><%= pageTitle %></h1>
-
+    <div class="row center">
+        <div class="col-8 col-6">
     <form method="POST" action="/products/<%= itemID %>?_method=PATCH">
         <!-- Name -->
-        <div class="form-group">
+        <div class="form-group index">
         <label for="product-name">Product Name</label>
-        <input type="text" class="form-control" name="product_name" id="product-name" value="<%= item.name %>" required>
+        <input type="text" class="form-control index" name="product_name" id="product-name" value="<%= item.name %>" required>
         </div>
 
         <!-- Price -->
-        <div class="form-group">
+        <div class="form-group index">
             <label for="price">Price</label>
-            <input type="text" class="form-control" name="price" id="price" value="<%= item.price %>" required>
+            <input type="text" class="form-control index" name="price" id="price" value="<%= item.price %>" required>
         </div>
 
         <!-- Priority -->
-        <div class="form-group">
+        <div class="form-group index">
             <label for="priority">Priority</label>
-            <input type="text" class="form-control" name="priority" id="priority"value="<%= item.priority %>" required>
+            <input type="text" class="form-control index" name="priority" id="priority"value="<%= item.priority %>" required>
         </div>
 
         <!-- Remarks -->
-        <div class="form-group">
+        <div class="form-group index">
             <label for="remarks">Remarks</label>
-            <input type="text" class="form-control" name="remarks" id="remarks" value="<%= item.remarks %>"required>
+            <input type="text" class="form-control index" name="remarks" id="remarks" value="<%= item.remarks %>"required>
         </div>
 
         <!-- Image URL -->
-        <div class="form-group">
+        <div class="form-group index">
             <label for="img-url">Image URL</label>
-            <input type="url" class="form-control" name="img_url" id="img-url" value="<%= item.image %>" required>
+            <input type="url" class="form-control index" name="img_url" id="img-url" value="<%= item.image %>">
         </div>
-
-        <button type="submit" class="btn btn-primary">Submit</button>
+        
+        <div class="center ">
+            <button type="submit" class="btn inner btn-outline-success my-2 my-sm-0">Submit</button>
+        </div>
     </form>
-
+</div>
+</div>
 </div>
 
 <%- include('../partials/footer'); %>
