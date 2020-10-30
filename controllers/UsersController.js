@@ -226,7 +226,6 @@ const controllers = {
                 )
             })
             },
-
     deleteFromCart: (req, res) => {
         console.log("Inside Delete")
         UserProductModel.findOne({
