@@ -8,7 +8,6 @@ const session = require('express-session')
 const { result } = require('lodash')
 
 const controllers = {
-
     showRegistrationForm: (req, res) => {
         res.render('users/register', {
             pageTitle: 'Register as a User'
@@ -84,11 +83,10 @@ const controllers = {
             .then(result => {
                 // check if result is empty, if it is, no user, so login fail, redirect to login page
                 if (!result) {
-                    console.log('err: no result')
+                    console.log('error: no result')
                     res.redirect('/users/login')
                     return
                 }
-
                 // combine DB user salt with given password, and apply hash algo
                 const hash = SHA256(result.pwsalt + req.body.password).toString()
 
@@ -151,26 +149,22 @@ const controllers = {
             if(checkResult === null) {
                 UserProductModel.create ({
                     user_id: req.session.user._id,
-                    product_id:[ results.id],
+                    product_id:[results.id],
                     function (error, success) {
                         if (error) {
                             console.log(error);
-                        } else {
-                            console.log(success);
+                        } else {console.log(success);
                         }
                     }
                 })
                           res.render("/users/cart", {
                               pageTitle: 'User-cart',
                               products: results._id
-
                             })
             }
             else (checkResult.user_id === req.session.user._id) 
-            {
-                UserProductModel.findOneAndUpdate ({
-                    user_id: req.session.user._id
-                    },
+                {UserProductModel.findOneAndUpdate ({
+                    user_id: req.session.user._id},
                     {$addToSet: {  product_id: results.id } },
                     function (error, success) {
                         if (error) {
@@ -178,17 +172,17 @@ const controllers = {
                         } else {
                             console.log(success);
                         }
-                    }
-                    
-                )
-                res.render('users/cart', {
-                    pageTitle: 'User-cart',
-                    products:getUserProducts(req.session.user._id)
-            })
-        }
-
-        }
-        )
+                    })
+                    .then(results => {
+                        getUserProducts(req.session.user._id)
+                           .then(userProduct=>{
+                               res.render('users/cart',{
+                                   pageTitle: 'User-Cart',
+                                   products: userProduct
+                           })
+                       })
+                   })
+        }})
         .catch(err => {
             console.log(err)
             res.redirect('/users/login') //change redirect path
@@ -196,50 +190,43 @@ const controllers = {
     })
     },
 
-    logout: (req, res) => {
-        req.session.destroy()
-        res.redirect('/users/login')
-    },
-
-
     userCart: (req, res) => {
         UserProductModel.findOne({
             user_id: req.session.user._id
         })
         .then(result => {
-                ProductModel.find ({
-                _id: { $in: result.product_id}
-                })
-                .then(results => {
-                    console.log("I AM THERE 214 ")
-                    getUserProducts(req.session.user._id)
-                        .then(userProduct=>{
-                            console.log("I AM HERE 217  ", userProduct)
-                            res.render('users/cart',{
-                                pageTitle: 'User-Cart',
-                                products: userProduct
-                        })
-
-               
-                })
-                }
-                )
+            ProductModel.find ({
+            _id: { $in: result.product_id}
             })
-            },
-    deleteFromCart: (req, res) => {
-        console.log("Inside Delete")
-        UserProductModel.findOne({
-                user_id: req.session.user._id
-            })
-            .then(result => {
-                UserProductModel.updateOne({
-                $pull: { product_id: req.body.product_id }
+            .then(results => {
+                 getUserProducts(req.session.user._id)
+                    .then(userProduct=>{
+                        res.render('users/cart',{
+                            pageTitle: 'User-Cart',
+                            products: userProduct
+                    })
                 })
+            })
+        })
+    },
+ 
+    
+deleteFromCart: (req, res) => {
+    UserProductModel.findOneAndUpdate ({
+        user_id: req.session.user._id},
+        {$pull: { product_id: req.body.product_id } },
+        function (error, success) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log(success);
+            }
+        })
                     .then(deleteResult => {
-                        console.log("I AM THERE   ")
+                        console.log("219 ",deleteResult)
                         getUserProducts(req.session.user._id)
                         .then(userProduct=>{
-                            console.log("I AM HERE   ", userProduct)
+                            //console.log("I AM HERE   ", userProduct)
                         res.render('users/cart',{
                             pageTitle: 'User-Cart',
                             products: userProduct
@@ -247,29 +234,30 @@ const controllers = {
                         })
                     })
                     .catch(err => {
-                        console.log(err)
-                        res.redirect('users/cart')
+                        console.log("delete error ",err)
+                        getUserProducts(req.session.user._id)
+                        .then(userProduct=>{
+                            //console.log("I AM HERE   ", userProduct)
+                        res.render('users/cart',{
+                            pageTitle: 'User-Cart',
+                            products: userProduct
+                        })
                     })
-
-            })
-            .catch(err => {
-                console.log(err)
-                res.redirect('/users')
-            })
-    }
-
-
+                })
+    },
+    
+logout: (req, res) => {
+        req.session.destroy()
+        res.redirect('/users/login')
+    },
 }
- function getUserProducts(user){
-    //let productList=[]
+
+function getUserProducts(user){
     return UserProductModel.findOne({
         user_id: user
     })
     .then(userDocument=>{
-    //console.log("USER DOC    ",userDocument )
     return userDocument.product_id
-     //console.log("PRODUCT     ", productList)
-     
     } )
     .then(productIdArray => {
         return ProductModel.find(
@@ -279,9 +267,6 @@ const controllers = {
         )
         
     })
-  
-//Anubhav checking commit
-     
 }
 
 module.exports = controllers

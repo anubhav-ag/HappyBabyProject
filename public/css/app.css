@@ -162,3 +162,8 @@ transform: scale(3); }
 opacity: 1;
 -webkit-transform: scale(1);
 transform: scale(1); } }
+
+.delete:hover {
+background-color: red;
+border-color: red;
+}
