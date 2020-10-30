@@ -16,17 +16,16 @@
                         <h3 class="product-title"><%= 'Name: ' + item.name %></h3>
                         <p class="product-description index"><%= item.remarks %>
                         </p>
-                        <div class="rating">
-                            <span class="review-no index">41 reviews</span>
-                        </div>
-                    <p class="price index">
-                        <%= 'Price: ' + item.price %>
+
+                    <p class="index">
+                        <%= 'Price: $' + item.price %>
                     </p>
                     <p class="index">
                         <%= 'Priority: ' + item.priority %>
                         </p>
-                        <p class="vote index"><strong>91%</strong> of buyers enjoyed this product! <strong> (87 votes)</strong></p>
-                        <div class="outer">
+                        <p class="vote index"><strong><%= item.thumbsUp %></strong> <i class="fa fa-thumbs-up" style="font-size:24px"></i>       
+                            <strong><%= item.thumbsDown %> <i class="fa fa-thumbs-down" style="font-size:24px"></i>
+                                </strong></p>                        <div class="outer">
                             <a class="btn inner btn-outline-success my-2 my-sm-0" href="/products/<%= item.slug %>/ratings/new">Give Review</a>
                         </div>
                                 </div>

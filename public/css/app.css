@@ -143,6 +143,7 @@ margin-bottom: 15px; }
 .product-title {
 margin-top: 0;
 font-family: 'Lobster Two', cursive;
+text-align: left;
 }
 .product-title:hover {
  color: black
