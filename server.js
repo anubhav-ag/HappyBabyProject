@@ -1,7 +1,6 @@
 // =======================================
 //              DEPENDENCIES
 // =======================================
-
 require('dotenv').config()
 const express = require('express')
 const methodOverride = require('method-override')
@@ -27,13 +26,12 @@ app.use(express.urlencoded({
   extended: true
 }))
 
-
 app.use(session({
   secret: process.env.SESSION_SECRET,
   name: "app_session",
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: false, maxAge: 3600000 } // 3600000ms = 3600s = 60mins, cookie expires in an hour
+  cookie: { secure: false, maxAge: 3600000 }
 }))
 
 app.use(setUserVarMiddleware)

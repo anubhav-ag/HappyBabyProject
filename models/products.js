@@ -15,7 +15,7 @@ const productSchema = new mongoose.Schema({
         required: true
     },
     priority: {
-        type: mongoose.Types.Decimal128,
+        type: String,
         required: true
     },
     remarks: {
@@ -24,7 +24,6 @@ const productSchema = new mongoose.Schema({
     image: String,
     
     votes: String,
-    
     percentage: String
 
 })

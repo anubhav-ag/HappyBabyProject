@@ -118,7 +118,7 @@ showEditForm: (req, res) => {
         )
             .then(result => {
 
-                ProductModel.update(
+                ProductModel.updateOne(
                     {
                         slug: req.params.slug
                     },
