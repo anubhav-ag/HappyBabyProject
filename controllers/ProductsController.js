@@ -3,13 +3,13 @@ const ProductModel = require('../models/products')
 
 const productsController = {
 
-    introPage: (req, res) => {
+introPage: (req, res) => {
         res.render('products/intro', {
             pageTitle: "Happy Baby - Introduction"
         })
     },
     
-    contactPage: (req, res) => {
+contactPage: (req, res) => {
         res.render('products/contact', {
             pageTitle: "Happy Baby - Contact Us"
         })
